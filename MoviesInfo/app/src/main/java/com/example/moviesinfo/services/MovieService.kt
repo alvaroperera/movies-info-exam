@@ -11,7 +11,7 @@ interface MovieService {
     suspend fun getMoviesByName(
         @Query("s") query: String,
         @Query("apiKey") apiKey: String="fb7aca4"
-    ) : MoviesResponse
+    ) : MoviesResponse?
 
     @GET(".")
     suspend fun getMovieById(

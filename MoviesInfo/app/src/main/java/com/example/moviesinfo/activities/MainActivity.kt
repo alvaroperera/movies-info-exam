@@ -71,10 +71,12 @@ class MainListActivity : AppCompatActivity() {
                 val result = service.getMoviesByName(query)
 
                 CoroutineScope(Dispatchers.Main).launch {
-                    if (result.totalResults != "0") {
-                        adapter.updateItems(result.search)
-                    } else {
-                        println("Nothing to show")
+                    if (result != null) {
+                        if (result.response != "False") {
+                            adapter.updateItems(result.search)
+                        } else {
+                            println("Nothing to show")
+                        }
                     }
                 }
             } catch (e: Exception) {
